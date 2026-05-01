@@ -33,6 +33,8 @@ def login():
                         st.rerun()
                     else:
                         st.error("Gagal masuk: Nama Pengguna atau Kata Sandi salah.")
+                        
+            st.info("**Akun Demo:**  \nUsername: `admin`  \nPassword: `admin`")
                 
         return False
     return True

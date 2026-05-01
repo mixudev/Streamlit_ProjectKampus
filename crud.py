@@ -31,24 +31,25 @@ def add_student(nim, nama, absen, tugas, uts, uas, nilai_akhir, grade, keteranga
     })
     save_data(data)
 
-def update_student(index, nim, nama, absen, tugas, uts, uas, nilai_akhir, grade, keterangan):
+def update_student(nim_lama, nim, nama, absen, tugas, uts, uas, nilai_akhir, grade, keterangan):
     data = load_data()
-    if 0 <= index < len(data):
-        data[index] = {
-            "NIM": nim,
-            "Nama": nama,
-            "Absen (10%)": absen,
-            "Tugas (20%)": tugas,
-            "UTS (30%)": uts,
-            "UAS (40%)": uas,
-            "Nilai Akhir": nilai_akhir,
-            "Grade": grade,
-            "Keterangan": keterangan
-        }
-        save_data(data)
+    for i, student in enumerate(data):
+        if student.get("NIM") == nim_lama:
+            data[i] = {
+                "NIM": nim,
+                "Nama": nama,
+                "Absen (10%)": absen,
+                "Tugas (20%)": tugas,
+                "UTS (30%)": uts,
+                "UAS (40%)": uas,
+                "Nilai Akhir": nilai_akhir,
+                "Grade": grade,
+                "Keterangan": keterangan
+            }
+            break
+    save_data(data)
 
-def delete_student(index):
+def delete_student(nim):
     data = load_data()
-    if 0 <= index < len(data):
-        data.pop(index)
-        save_data(data)
+    data = [student for student in data if student.get("NIM") != nim]
+    save_data(data)

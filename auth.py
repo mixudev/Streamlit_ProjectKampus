@@ -8,22 +8,23 @@ def login():
         st.session_state.logged_in = False
 
     if not st.session_state.logged_in:
-        st.markdown('<div class="mt-20"></div>', unsafe_allow_html=True)
+        st.write("")
+        st.write("")
+        st.write("")
         
         col1, col2, col3 = st.columns([1, 1, 1])
         with col2:
             st.markdown("""
-            <div class="text-center mb-6">
-                <h1 class="text-2xl font-bold tracking-tight theme-text uppercase mb-1">EduGrade</h1>
-                <p class="text-xs tracking-widest theme-text opacity-50 uppercase">Sistem Penilaian Mahasiswa</p>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-size: 1.5rem; font-weight: bold; letter-spacing: -0.025em; text-transform: uppercase; margin-bottom: 0.25rem;">EduGrade</h1>
+                <p style="font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.5; text-transform: uppercase;">Sistem Penilaian Mahasiswa</p>
             </div>
             """, unsafe_allow_html=True)
             
-            with st.container():
-                st.markdown('<div class="border border-solid theme-border p-6 theme-bg" style="border-width: 1px;">', unsafe_allow_html=True)
+            with st.container(border=True):
                 username = st.text_input("Nama Pengguna (Username)")
                 password = st.text_input("Kata Sandi (Password)", type="password")
-                st.markdown("<div class='mt-6'></div>", unsafe_allow_html=True)
+                st.write("")
                 
                 if st.button("MASUK SISTEM", use_container_width=True):
                     if username == "admin" and password == "admin":
@@ -32,7 +33,6 @@ def login():
                         st.rerun()
                     else:
                         st.error("Gagal masuk: Nama Pengguna atau Kata Sandi salah.")
-                st.markdown('</div>', unsafe_allow_html=True)
                 
         return False
     return True

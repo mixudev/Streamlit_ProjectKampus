@@ -26,38 +26,29 @@ if login():
             render_crud_interface()
             
     elif menu_selection == "Informasi Sistem":
-        st.markdown("""
-        <div class="border border-solid theme-border p-6" style="border-width: 1px;">
-            <h3 class="text-sm font-bold uppercase tracking-widest theme-text mb-4 border-b border-solid theme-border pb-2">Informasi & Aturan Sistem Penilaian</h3>
-            <p class="text-sm theme-text mb-4 leading-relaxed">
-            Selamat datang di panduan <b>EduGrade</b>. Sistem ini dibuat agar perhitungan nilai menjadi sepenuhnya otomatis, sehingga meminimalisir kesalahan perhitungan (<i>human error</i>). 
-            Berikut adalah penjelasan mengenai cara kerja dan kriteria penilaian dari aplikasi ini:
-            </p>
-            <h4 class="text-sm font-bold theme-text mb-2 mt-6">1. Bagaimana Nilai Akhir Dihitung?</h4>
-            <p class="text-sm theme-text mb-2 leading-relaxed">
-            Setiap nilai yang Anda masukkan di formulir (Skala 0 sampai 100) tidak langsung dijumlahkan begitu saja. Setiap komponen memiliki "bobot" atau persentase pengaruhnya masing-masing terhadap Nilai Akhir:
-            </p>
-            <ul class="text-sm theme-text list-disc pl-5 mb-4 leading-relaxed">
-                <li><strong>Nilai Kehadiran:</strong> Mempengaruhi 10% dari Nilai Akhir.</li>
-                <li><strong>Nilai Tugas:</strong> Mempengaruhi 20% dari Nilai Akhir.</li>
-                <li><strong>Nilai UTS (Ujian Tengah Semester):</strong> Mempengaruhi 30% dari Nilai Akhir.</li>
-                <li><strong>Nilai UAS (Ujian Akhir Semester):</strong> Mempengaruhi paling besar, yaitu 40% dari Nilai Akhir.</li>
-            </ul>
-            <h4 class="text-sm font-bold theme-text mb-2 mt-6">2. Standar Predikat Huruf (Grade)</h4>
-            <p class="text-sm theme-text mb-2 leading-relaxed">
-            Setelah sistem selesai menjumlahkan semua komponen menjadi Nilai Akhir, sistem akan secara cerdas (<i>Rule-Based</i>) menentukan huruf mutu (Grade) dan kelulusan menggunakan pedoman berikut:
-            </p>
-            <div class="border border-solid theme-border p-4 theme-bg">
-                <ul class="text-sm theme-text list-none pl-0 mb-0 leading-relaxed">
-                    <li class="mb-1">✅ <strong>Grade A:</strong> Nilai Akhir 85 atau lebih &rarr; <i>(Lulus - Sangat Baik)</i></li>
-                    <li class="mb-1">✅ <strong>Grade B:</strong> Nilai Akhir 70 sampai 84.9 &rarr; <i>(Lulus - Baik)</i></li>
-                    <li class="mb-1">✅ <strong>Grade C:</strong> Nilai Akhir 55 sampai 69.9 &rarr; <i>(Lulus - Cukup)</i></li>
-                    <li class="mb-1">❌ <strong>Grade D:</strong> Nilai Akhir 40 sampai 54.9 &rarr; <i>(Tidak Lulus - Kurang)</i></li>
-                    <li class="mb-0">❌ <strong>Grade E:</strong> Nilai Akhir di bawah 40 &rarr; <i>(Tidak Lulus - Sangat Kurang)</i></li>
-                </ul>
-            </div>
-            <p class="text-xs theme-text mt-6 opacity-60">
-            * Aturan di atas dikelola di dalam "Knowledge Base" sistem dan beroperasi secara otomatis.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
+        with st.container(border=True):
+            st.markdown("### Informasi & Aturan Sistem Penilaian")
+            st.write("Selamat datang di panduan **EduGrade**. Sistem ini dibuat agar perhitungan nilai menjadi sepenuhnya otomatis, sehingga meminimalisir kesalahan perhitungan (*human error*). Berikut adalah penjelasan mengenai cara kerja dan kriteria penilaian dari aplikasi ini:")
+            
+            st.markdown("#### 1. Bagaimana Nilai Akhir Dihitung?")
+            st.write("Setiap nilai yang Anda masukkan di formulir (Skala 0 sampai 100) tidak langsung dijumlahkan begitu saja. Setiap komponen memiliki \"bobot\" atau persentase pengaruhnya masing-masing terhadap Nilai Akhir:")
+            st.markdown("""
+            - **Nilai Kehadiran:** Mempengaruhi 10% dari Nilai Akhir.
+            - **Nilai Tugas:** Mempengaruhi 20% dari Nilai Akhir.
+            - **Nilai UTS (Ujian Tengah Semester):** Mempengaruhi 30% dari Nilai Akhir.
+            - **Nilai UAS (Ujian Akhir Semester):** Mempengaruhi paling besar, yaitu 40% dari Nilai Akhir.
+            """)
+            
+            st.markdown("#### 2. Standar Predikat Huruf (Grade)")
+            st.write("Setelah sistem selesai menjumlahkan semua komponen menjadi Nilai Akhir, sistem akan secara cerdas (*Rule-Based*) menentukan huruf mutu (Grade) dan kelulusan menggunakan pedoman berikut:")
+            
+            with st.container(border=True):
+                st.markdown("""
+                - ✅ **Grade A:** Nilai Akhir 85 atau lebih &rarr; *(Lulus - Sangat Baik)*
+                - ✅ **Grade B:** Nilai Akhir 70 sampai 84.9 &rarr; *(Lulus - Baik)*
+                - ✅ **Grade C:** Nilai Akhir 55 sampai 69.9 &rarr; *(Lulus - Cukup)*
+                - ❌ **Grade D:** Nilai Akhir 40 sampai 54.9 &rarr; *(Tidak Lulus - Kurang)*
+                - ❌ **Grade E:** Nilai Akhir di bawah 40 &rarr; *(Tidak Lulus - Sangat Kurang)*
+                """)
+                
+            st.caption("* Aturan di atas dikelola di dalam 'Knowledge Base' sistem dan beroperasi secara otomatis.")
